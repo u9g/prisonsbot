@@ -280,7 +280,7 @@ bot.on("message", function(message) {
             embed.setThumbnail("https://i.imgur.com/uoYSTj8.png")
             message.channel.send(embed);
         } else
-        if (args[1] == "armor" && args[2] == "iron" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100 &&) {
+        if (args[1] == "armor" && args[2] == "iron" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((7200 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 12000)) - ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000)));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
