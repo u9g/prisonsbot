@@ -193,7 +193,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else
          if (args[1] == "diamond" && args[2] >= 2 && args[2] <= 100) {
-            var output = ((0 * (args[2] - 1)) + (((args[2] - 2) * (args[2] -1) / 2) * 0));
+            var output = ((9600 * (args[2] - 1)) + (((args[2] - 2) * (args[2] -1) / 2) * 14400));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
             embed.setTitle(`Energy Required to make **Level ${args[2]}** Diamond Sword`)
@@ -393,7 +393,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else
         if (args[1] == "sword" && args[2] == "diamond" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
-            var output = (((0 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 0)) - ((0 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 0)));
+            var output = (((9600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 14400)) - ((9600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400)));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
             embed.setTitle(`Energy Required get **Level ${args[3]}** Diamond Sword to **Level ${args[4]}**`)
