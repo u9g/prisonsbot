@@ -7,7 +7,7 @@ var bot = new Discord.Client();
 bot.on("ready", function() {
     console.log("Bot Online");
     
-bot.user.setActivity('by Majorblake')
+bot.user.setActivity('!help by Majorblake')
 });
 
 bot.on("message", function(message) {
