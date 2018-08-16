@@ -85,7 +85,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else
         if (args[1] == "diamond" && args[2] >= 2 && args[2] <= 100) {
-            var output = ((0 * (args[2] - 1)) + (((args[2] - 2) * (args[2] -1) / 2) * 0));
+            var output = ((9600 * (args[2] - 1)) + (((args[2] - 2) * (args[2] -1) / 2) * 14400));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
             embed.setTitle(`Energy Required to make **Level ${args[2]}** Diamond Armor`)
@@ -139,7 +139,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else
         if (args[1] == "diamond" && args[2] >= 2 && args[2] <= 100) {
-            var output = ((0 * (args[2] - 1)) + (((args[2] - 2) * (args[2] -1) / 2) * 0));
+            var output = ((9600 * (args[2] - 1)) + (((args[2] - 2) * (args[2] -1) / 2) * 14400));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
             embed.setTitle(`Energy Required to make **Level ${args[2]}** Diamond Pickaxe`)
@@ -217,7 +217,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else
         if (args[1] == "stone" && args[2] >= 2 && args[2] <= 100) {
-           var output = ((0 * (args[2] - 1)) + (((args[2] - 2) * (args[2] -1) / 2) * 0));
+           var output = ((9000 * (args[2] - 1)) + (((args[2] - 2) * (args[2] -1) / 2) * 16200));
            var embed = new Discord.RichEmbed()
            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
            embed.setTitle(`Energy Required to make **Level ${args[2]}** Stone Axe`)
@@ -291,7 +291,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else
         if (args[1] == "armor" && args[2] == "diamond" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100 && args[4] >= args[3]) {
-            var output = (((0 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 0)) - ((0 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 0)));
+            var output = (((9600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 14400)) - ((9600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400)));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
             embed.setTitle(`Energy Required get **Level ${args[3]}** Diamond Armor to **Level ${args[4]}**`)
@@ -342,7 +342,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else
         if (args[1] == "pickaxe" && args[2] == "diamond" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100 && args[4] >= args[3]) {
-            var output = (((0 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 0)) - ((0 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 0)));
+            var output = (((9600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 14000)) - ((9600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400)));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
             embed.setTitle(`Energy Required get **Level ${args[3]}** Diamond Pickaxe to **Level ${args[4]}**`)
@@ -414,7 +414,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else
         if (args[1] == "axe" && args[2] == "stone" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100 && args[4] >= args[3]) {
-            var output = (((0 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 0)) - ((0 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 0)));
+            var output = (((9000 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 16200)) - ((9000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 16200)));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
             embed.setTitle(`Energy Required get **Level ${args[3]}** Stone Axe to **Level ${args[4]}**`)
