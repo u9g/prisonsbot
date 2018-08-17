@@ -207,6 +207,9 @@ bot.on("message", function(message) {
             break;
 
         case "axe":
+            
+        message.channel.sendMessage("**Axes are not currently available.**\n\nThey will be implemented soon, sorry for any inconvenience");
+        break;
         
         if (args[1] == "wood" && args[2] >= 2 && args[2] <= 100) {
             var output = ((0 * (args[2] - 1)) + (((args[2] - 2) * (args[2] -1) / 2) * 0));
