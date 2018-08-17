@@ -34,7 +34,7 @@ bot.on("message", function(message) {
             embed.addField("**!help**", "Displays this message")
             embed.addField("**!stats**", "Displays bot stats")
             embed.addBlankField()
-            embed.addField("**[type]:**", "(armor, pickaxe, sword, axe)")
+            embed.addField("**[type]:**", "(armor, pickaxe, sword, axe, guard)")
             embed.addField("**[rarity]:**", "(leather, gold, iron, diamond) - (wood, stone, gold, iron, diamond)")
             embed.addField("**[level]:**", "Between 2 and 100 (Keep in mind unenchanted equipment is Level 1)")
             embed.setFooter("note: all commands should be in lower-case", "https://i.imgur.com/0McxHIL.png")
