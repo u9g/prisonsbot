@@ -207,7 +207,7 @@ bot.on("message", function(message) {
             break;
 
         case "axe":
-            
+
         message.channel.sendMessage("**Axes are not currently available.**\n\nThey will be implemented soon, sorry for any inconvenience");
         break;
         
