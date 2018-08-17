@@ -282,7 +282,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else
         if ((args[1] == "armor" || args[1] == "armour") && args[2] == "iron" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
-            var output = (((7200 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 12000)) - ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000)));
+            var output = (((8400 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 13200)) - ((8400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 13200)));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
             embed.setTitle(`Energy Required get **Level ${args[3]}** Iron Armor to **Level ${args[4]}**`)
