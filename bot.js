@@ -45,7 +45,7 @@ bot.on("message", function(message) {
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
             embed.setTitle("**Bot Statistics**")
             embed.setColor("4286f4")
-            embed.setThumbnail("https://i.imgur.com/lwwpTCl.png")
+            embed.setThumbnail("https://i.imgur.com/UKxYECm.png")
             embed.addField("**Servers**", `${bot.guilds.size}`)
             embed.addField("**Channels**", `${bot.channels.size}`)
             embed.addField("**Users**", `${bot.users.size}`)
@@ -259,6 +259,19 @@ bot.on("message", function(message) {
         } else message.channel.sendMessage("**Invalid Input**\n\n!axe [rarity] [level]"); 
             break;
 
+        case "guard":
+        if (args[1] >= 2 && args[1] <= 40) {
+            var output = (((args[1] - 1)* 5160) + (((Math.pow((args[1] - 2), 3) / 3) + ((Math.pow((args[1] - 2), 2)) / 2) + (((args[1] - 2) / 6))) * 1041))
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required to make **Level ${args[1]}** Guard`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/ZdHDjrj.png")
+            message.channel.send(embed)
+        } else message.channel.sendMessage("**Invalid Input**\n\n!guard [level]"); 
+        break;
+
         case "target":
         
         if ((args[1] == "armor" || args[1] == "armour") && args[2] == "leather" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
@@ -452,6 +465,17 @@ bot.on("message", function(message) {
             embed.setDescription(`${output.toLocaleString()} Energy`)
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/JvFXvWs.png")
+            message.channel.send(embed);
+        } else
+
+        if (args[1] == "guard" && args[2] >= 2 && args[2] <= 40 && args[3] >= 2 && args[3] <= 40) {
+            var output = ((((args[3] - 1)* 5160) + (((Math.pow((args[3] - 2), 3) / 3) + ((Math.pow((args[3] - 2), 2)) / 2) + (((args[3] - 2) / 6))) * 1041)) - (((args[2] - 1)* 5160) + (((Math.pow((args[2] - 2), 3) / 3) + ((Math.pow((args[2] - 2), 2)) / 2) + (((args[2] - 2) / 6))) * 1041)))
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[2]}** Guard to **Level ${args[3]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/ZdHDjrj.png")
             message.channel.send(embed);
         } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]"); 
             break;
