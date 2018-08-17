@@ -29,6 +29,7 @@ bot.on("message", function(message) {
             embed.addField("**!pickaxe [rarity] [level]**", "Calculates amount of Energy needed to get specified rarity of **pickaxe** to specified level")
             embed.addField("**!sword [rarity] [level]**", "Calculates amount of Energy needed to get specified rarity of **sword** to specified level")
             embed.addField("**!axe [rarity] [level]**", "Calculates amount of Energy needed to get specified rarity of **axe** to specified level")
+            embed.addField("**!guard [level]**", "Calculates amount of Energy needed to get **guard** to specified level")
             embed.addField("**!target [type] [rarity] [current level] [target level]**", "Calculates amount of Energy needed to get current level of equipment to target level")
             embed.addField("**!help**", "Displays this message")
             embed.addField("**!stats**", "Displays bot stats")
