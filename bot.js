@@ -5,6 +5,8 @@ const PREFIX = "!";
 var bot = new Discord.Client();
 
 bot.on("ready", function() {
+    var devchannel = bot.channels.get("479281923261202432")
+    devchannel.send("<@204248274826166272> Prisons Bot Online")
     console.log("Bot Online");
     
 bot.user.setActivity('!help by Majorblake')
@@ -103,7 +105,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/FFwgmCO.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!calc [type] [rarity] [level]")
+        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
         } else
 
 //PICKAXE
@@ -158,7 +160,7 @@ bot.on("message", function(message) {
             embed.setThumbnail("https://i.imgur.com/4mESgHv.png")
             message.channel.send(embed);
         
-        } else message.channel.sendMessage("**Invalid Input**\n\n!calc [type] [rarity] [level]")
+        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
         } else
 
 // SWORD
@@ -212,7 +214,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/Lz29W0j.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!calc [type] [rarity] [level]")
+        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
         } else
 
 // AXE
@@ -266,7 +268,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/JvFXvWs.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!calc [type] [rarity] [level]")
+        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
         } else
 
 // GUARD
@@ -280,8 +282,8 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/ZdHDjrj.png")
             message.channel.send(embed)
-        } else message.channel.sendMessage("**Invalid Input**\n\n!calc [type] [rarity] [level]")
-        } else message.channel.sendMessage("**Invalid Input**\n\n!calc [type] [rarity] [level]")
+        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
+        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
     break;
 
 // TARGET
@@ -299,7 +301,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/muDDYan.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((6000 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 10800)) - ((6000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 10800)));
@@ -311,7 +313,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/uoYSTj8.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (args[2] == "iron" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((8400 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 13200)) - ((8400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 13200)));
@@ -323,7 +325,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/CAcAXUv.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (args[2] == "diamond" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((9600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 14400)) - ((9600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400)));
@@ -335,8 +337,8 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/FFwgmCO.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
     } else
 
 // PICKAXE
@@ -351,7 +353,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/FdSfdhC.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else 
         if (args[2] == "stone" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((6000 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 10800)) - ((6000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 10800)));
@@ -363,7 +365,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/tPUTodA.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((7200 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 12000)) - ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000)));
@@ -375,7 +377,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/vctODx9.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (args[2] == "iron" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((8400 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 13200)) - ((8400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 13200)));
@@ -387,7 +389,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/uoKfLbK.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (rgs[2] == "diamond" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((9600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 14000)) - ((9600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400)));
@@ -399,8 +401,8 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/4mESgHv.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
     } else
 
 // SWORD
@@ -415,7 +417,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/EkPagLG.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (args[2] == "stone" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((6000 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 10800)) - ((6000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 10800)));
@@ -427,7 +429,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/lB081Fb.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((7200 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 12000)) - ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000)));
@@ -439,7 +441,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/IERAunN.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (args[2] == "iron" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((8400 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 13200)) - ((8400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 13200)));
@@ -451,7 +453,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/XOSmxFU.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (args[2] == "diamond" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((9600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 14400)) - ((9600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400)));
@@ -463,8 +465,8 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/Lz29W0j.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
     } else
 
 // AXE
@@ -479,7 +481,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/ylzAwN4.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (args[2] == "stone" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((9000 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 16200)) - ((9000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 16200)));
@@ -491,7 +493,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/q863UJa.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((10800 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 18000)) - ((10800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 18000)));
@@ -503,7 +505,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/cYwb3ku.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (args[2] == "iron" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((12600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 19800)) - ((12600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 19800)));
@@ -515,7 +517,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/jpDXA3g.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
         if (args[2] == "diamond" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((14400 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 21600)) - ((14400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 21600)));
@@ -527,8 +529,8 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/JvFXvWs.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
     } else
 
 // GUARD
@@ -543,11 +545,11 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/ZdHDjrj.png")
             message.channel.send(embed);
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
-        } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
-    } else message.channel.sendMessage("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+    } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
     break;
-
+    
     }   
 });
 
