@@ -4,9 +4,11 @@ const PREFIX = "!";
 
 var bot = new Discord.Client();
 
+var channelid = "479281923261202432";
+
 bot.on("ready", function() {
-    var devchannel = bot.channels.get("479281923261202432")
-    devchannel.send("<@204248274826166272> Prisons Bot Online")
+    var devchannel = bot.channels.get(channelid)
+    devchannel.send("<@204248274826166272> Bot Online")
     console.log("Bot Online");
     
 bot.user.setActivity('!help by Majorblake')
@@ -36,7 +38,7 @@ bot.on("message", function(message) {
 		var now = new Date();
         var hours = [ now.getHours()];
         var minutes = [ now.getMinutes()];
-        var devchannel = bot.channels.get("479281923261202432");
+        var devchannel = bot.channels.get(channelid);
         devchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
 
             var embed = new Discord.RichEmbed()
@@ -61,7 +63,7 @@ bot.on("message", function(message) {
 		var now = new Date();
         var hours = [ now.getHours()];
         var minutes = [ now.getMinutes()];
-        var devchannel = bot.channels.get("479281923261202432");
+        var devchannel = bot.channels.get(channelid);
         devchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
 
             var embed = new Discord.RichEmbed()
@@ -81,7 +83,7 @@ bot.on("message", function(message) {
 		var now = new Date();
         var hours = [ now.getHours()];
         var minutes = [ now.getMinutes()];
-        var devchannel = bot.channels.get("479281923261202432");
+        var devchannel = bot.channels.get(channelid);
         devchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
 
 // ARMOR
@@ -312,7 +314,7 @@ bot.on("message", function(message) {
 		var now = new Date();
         var hours = [ now.getHours()];
         var minutes = [ now.getMinutes()];
-        var devchannel = bot.channels.get("479281923261202432");
+        var devchannel = bot.channels.get(channelid);
         devchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
 
 // ARMOR
