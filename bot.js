@@ -98,7 +98,7 @@ bot.on("message", function(message) {
             embed.setThumbnail("https://i.imgur.com/muDDYan.png")
             message.channel.send(embed);
         } else
-        if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100) {
+        if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 100) {
             var output = ((6000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 10800));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -132,7 +132,7 @@ bot.on("message", function(message) {
 
 //PICKAXE
         if (args[1] == "pickaxe" || args[1] == "pick") {
-        if (args[2] == "wood" && args[3] >= 2 && args[3] <= 100) {
+        if ((args[2] == "wood" || args[2] == "wooden") && args[3] >= 2 && args[3] <= 100) {
             var output = ((4800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 9600));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -152,7 +152,7 @@ bot.on("message", function(message) {
             embed.setThumbnail("https://i.imgur.com/tPUTodA.png")
             message.channel.send(embed);
         } else
-        if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100) {
+        if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 100) {
             var output = ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -187,7 +187,7 @@ bot.on("message", function(message) {
 
 // SWORD
         if (args[1] == "sword") {
-        if (args[2] == "wood" && args[3] >= 2 && args[3] <= 100) {
+        if ((args[2] == "wood" || args[2] == "wooden") && args[3] >= 2 && args[3] <= 100) {
             var output = ((4300 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 8800));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -207,7 +207,7 @@ bot.on("message", function(message) {
             embed.setThumbnail("https://i.imgur.com/lB081Fb.png")
             message.channel.send(embed);
         } else
-        if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100) {
+        if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 100) {
             var output = ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -241,7 +241,7 @@ bot.on("message", function(message) {
 
 // AXE
         if (args[1] == "axe") {
-        if (args[2] == "wood" && args[3] >= 2 && args[3] <= 100) {
+        if ((args[2] == "wood" || args[2] == "wooden") && args[3] >= 2 && args[3] <= 100) {
             var output = ((6440 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 13200));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -261,7 +261,7 @@ bot.on("message", function(message) {
            embed.setThumbnail("https://i.imgur.com/q863UJa.png")
            message.channel.send(embed);
         } else
-        if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100) {
+        if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 100) {
             var output = ((10800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 18000));
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -331,7 +331,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+        if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((6000 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 10800)) - ((6000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 10800)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -371,7 +371,7 @@ bot.on("message", function(message) {
 
 // PICKAXE
         if (args[1] == "pickaxe" || args[1] == "pick") {
-        if (args[2] == "wood" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+        if ((args[2] == "wood" || args[2] == "wooden") && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((4800 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 9600)) - ((4800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 9600)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -395,7 +395,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+        if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((7200 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 12000)) - ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -435,7 +435,7 @@ bot.on("message", function(message) {
 
 // SWORD
         if (args[1] == "sword") {
-        if (args[2] == "wood" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+        if ((args[2] == "wood" || args[2] == "wooden") && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((4300 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 8800)) - ((4300 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 8800)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -459,7 +459,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+        if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((7200 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 12000)) - ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -499,7 +499,7 @@ bot.on("message", function(message) {
 
 // AXE
         if (args[1] == "axe") {
-        if (args[2] == "wood" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+        if ((args[2] == "wood" || args[2] == "wooden") && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((6440 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 13200)) - ((6440 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 13200)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -523,7 +523,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+        if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((10800 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 18000)) - ((10800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 18000)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
