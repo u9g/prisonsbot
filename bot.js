@@ -32,6 +32,10 @@ bot.on("message", function(message) {
         break;
 
         case "help":
+
+        var devchannel = bot.channels.get("479281923261202432")
+        devchannel.send(`**!help** ${message}`)
+
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
             embed.setTitle(`**Command Help**`)
@@ -50,6 +54,10 @@ bot.on("message", function(message) {
             break;
 
         case "stats":
+
+        var devchannel = bot.channels.get("479281923261202432")
+        devchannel.send(`**!stats** ${message}`)
+
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
             embed.setTitle("**Bot Statistics**")
@@ -63,6 +71,9 @@ bot.on("message", function(message) {
 
         case "calculate":
         case "calc":
+
+        var devchannel = bot.channels.get("479281923261202432")
+        devchannel.send(`**!calc** ${message}`)
 
 // ARMOR
         if (args[1] == "armor" || args[1] == "armour") {
@@ -288,6 +299,9 @@ bot.on("message", function(message) {
 
 // TARGET
         case "target":
+
+        var devchannel = bot.channels.get("479281923261202432")
+        devchannel.send(`**!target** ${message}`)
 
 // ARMOR
         if (args[1] == "armor" || args[1] == "armour") {
