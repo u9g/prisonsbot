@@ -33,8 +33,11 @@ bot.on("message", function(message) {
 
         case "help":
 
-        var devchannel = bot.channels.get("479281923261202432")
-        devchannel.send(`**!help** ${message}`)
+		var now = new Date();
+        var hours = [ now.getHours()];
+        var minutes = [ now.getMinutes()];
+        var devchannel = bot.channels.get("479281923261202432");
+        devchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
 
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -55,8 +58,11 @@ bot.on("message", function(message) {
 
         case "stats":
 
-        var devchannel = bot.channels.get("479281923261202432")
-        devchannel.send(`**!stats** ${message}`)
+		var now = new Date();
+        var hours = [ now.getHours()];
+        var minutes = [ now.getMinutes()];
+        var devchannel = bot.channels.get("479281923261202432");
+        devchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
 
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -72,8 +78,11 @@ bot.on("message", function(message) {
         case "calculate":
         case "calc":
 
-        var devchannel = bot.channels.get("479281923261202432")
-        devchannel.send(`**!calc** ${message}`)
+		var now = new Date();
+        var hours = [ now.getHours()];
+        var minutes = [ now.getMinutes()];
+        var devchannel = bot.channels.get("479281923261202432");
+        devchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
 
 // ARMOR
         if (args[1] == "armor" || args[1] == "armour") {
@@ -300,8 +309,11 @@ bot.on("message", function(message) {
 // TARGET
         case "target":
 
-        var devchannel = bot.channels.get("479281923261202432")
-        devchannel.send(`**!target** ${message}`)
+		var now = new Date();
+        var hours = [ now.getHours()];
+        var minutes = [ now.getMinutes()];
+        var devchannel = bot.channels.get("479281923261202432");
+        devchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
 
 // ARMOR
         if (args[1] == "armor" || args[1] == "armour") {
