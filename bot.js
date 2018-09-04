@@ -419,7 +419,7 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (rgs[2] == "diamond" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+        if (args[2] == "diamond" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
             var output = (((9600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 14000)) - ((9600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
