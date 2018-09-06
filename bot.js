@@ -51,8 +51,8 @@ bot.on("message", function(message) {
             embed.addField("**!help**", "Displays this message")
             embed.addField("**!stats**", "Displays bot stats")
             embed.addBlankField()
-            embed.addField("**[type]:**", "(armor, pickaxe, sword, axe, guard)")
-            embed.addField("**[rarity]:**", "(leather, gold, iron, diamond)\n(wood, stone, gold, iron, diamond)")
+            embed.addField("**[type]:**", "(armor, pickaxe, sword, axe, guard, satchel)")
+            embed.addField("**[rarity]:**", "(leather, gold, iron, diamond)\n(wood, stone, gold, iron, diamond)\n(coal, coalore, iron, ironore, lapis, lapisore, redstone, redstoneore, diamond, diamondore, emerald, emeraldore)")
             embed.addField("**[level]:**", "Between 2 and 100 (Keep in mind unenchanted equipment is Level 1)\nor between 2 and 40 for guards")
             embed.setFooter("note: all commands should be in lower-case", "https://i.imgur.com/0McxHIL.png")
             message.channel.send(embed);
@@ -293,6 +293,20 @@ bot.on("message", function(message) {
         } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
         } else
 
+// GUARD
+        if (args[1] == "guard" || args[1] == "guards") {
+        if (args[2] >= 2 && args[2] <= 40) {
+            var output = (((args[2] - 1)* 5160) + (((Math.pow((args[2] - 2), 3) / 3) + ((Math.pow((args[2] - 2), 2)) / 2) + (((args[2] - 2) / 6))) * 1041))
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required to make **Level ${args[2]}** Guard`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/ZdHDjrj.png")
+            message.channel.send(embed)
+        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
+        } else
+
 // SATCHELS
         if (args[1] == "satchel") {
         if ((args[2] == "coal") && args[3] >= 2 && args[3] <= 100) {
@@ -315,6 +329,7 @@ bot.on("message", function(message) {
             embed.setThumbnail("https://i.imgur.com/qKK2rXT.png")
             message.channel.send(embed);
         } else
+
         if ((args[2] == "iron") && args[3] >= 2 && args[3] <= 100) {
             var output = ((12600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400));
             var embed = new Discord.RichEmbed()
@@ -335,6 +350,7 @@ bot.on("message", function(message) {
             embed.setThumbnail("https://i.imgur.com/3F9vI6s.png")
             message.channel.send(embed);
         } else
+
         if ((args[2] == "lapis") && args[3] >= 2 && args[3] <= 100) {
             var output = ((14400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 16200));
             var embed = new Discord.RichEmbed()
@@ -355,6 +371,7 @@ bot.on("message", function(message) {
             embed.setThumbnail("https://i.imgur.com/46RNDxp.png")
             message.channel.send(embed);
         } else
+
         if ((args[2] == "redstone") && args[3] >= 2 && args[3] <= 100) {
             var output = ((16200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 18000));
             var embed = new Discord.RichEmbed()
@@ -375,6 +392,7 @@ bot.on("message", function(message) {
             embed.setThumbnail("https://i.imgur.com/mL8mBcW.png")
             message.channel.send(embed);
         } else
+
         if ((args[2] == "gold") && args[3] >= 2 && args[3] <= 100) {
             var output = ((18000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 19800));
             var embed = new Discord.RichEmbed()
@@ -395,6 +413,7 @@ bot.on("message", function(message) {
             embed.setThumbnail("https://i.imgur.com/InthtCT.png")
             message.channel.send(embed);
         } else
+
         if ((args[2] == "diamond") && args[3] >= 2 && args[3] <= 100) {
             var output = ((19800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 21600));
             var embed = new Discord.RichEmbed()
@@ -415,6 +434,7 @@ bot.on("message", function(message) {
             embed.setThumbnail("https://i.imgur.com/jsBBMeb.png")
             message.channel.send(embed);
         } else
+
         if ((args[2] == "emerald") && args[3] >= 2 && args[3] <= 100) {
             var output = ((21600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 23400));
             var embed = new Discord.RichEmbed()
@@ -434,20 +454,6 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/L8HWA6J.png")
             message.channel.send(embed);
-        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
-        } else
-        
-// GUARD
-        if (args[1] == "guard" || args[1] == "guards") {
-        if (args[2] >= 2 && args[2] <= 40) {
-            var output = (((args[2] - 1)* 5160) + (((Math.pow((args[2] - 2), 3) / 3) + ((Math.pow((args[2] - 2), 2)) / 2) + (((args[2] - 2) / 6))) * 1041))
-            var embed = new Discord.RichEmbed()
-            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
-            embed.setTitle(`Energy Required to make **Level ${args[2]}** Guard`)
-            embed.setDescription(`${output.toLocaleString()} Energy`)
-            embed.setColor("4286f4")
-            embed.setThumbnail("https://i.imgur.com/ZdHDjrj.png")
-            message.channel.send(embed)
         } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
         } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
     break;
