@@ -10,7 +10,8 @@ bot.on("ready", function() {
     var devchannel = bot.channels.get(channelid)
     devchannel.send("<@204248274826166272> Bot Online")
     console.log("Bot Online");
-    bot.user.setActivity('!help by Majorblake')
+    
+bot.user.setActivity('!help by Majorblake')
 });
 
 bot.on("message", function(message) {
