@@ -725,6 +725,185 @@ bot.on("message", function(message) {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+    } else
+
+// SATCHEL
+
+        if (args[1] == "satchel") {
+        if (args[2] == "coal" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((10800 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 12600)) - ((10800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12600)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Coal Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/riB4W6x.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else
+        if (args[2] == "coalore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((7200 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 8400)) - ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 8400)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Coal Ore Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/qKK2rXT.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else 
+        
+        if (args[2] == "iron" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((12600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 14400)) - ((12600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Iron Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/ZFQD8EM.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else
+        if (args[2] == "ironore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((8400 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 9600)) - ((8400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 9600)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Iron Ore Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/3F9vI6s.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else 
+
+        if (args[2] == "lapis" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((14400 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 16200)) - ((14400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 16200)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Lapis Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/J1QgASo.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else
+        if (args[2] == "lapisore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((9600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 10800)) - ((9600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 10800)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Lapis Ore Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/46RNDxp.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else 
+
+        if (args[2] == "redstone" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((16200 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 18000)) - ((16200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 18000)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Redstone Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/BIoiD7q.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else
+        if (args[2] == "redstoneore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((10800 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 12000)) - ((10800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Redstone Ore Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/mL8mBcW.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else 
+
+        if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((18000 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 19800)) - ((18000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 19800)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Gold Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/Xz86tkD.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else
+        if (args[2] == "goldore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((12000 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 13200)) - ((12000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 13200)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Gold Ore Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/InthtCT.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else 
+
+        if (args[2] == "diamond" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((19800 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 21600)) - ((19800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 21600)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Diamond Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/S9NLL3d.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else
+        if (args[2] == "diamondore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((13200 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 14400)) - ((13200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Diamond Ore Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/jsBBMeb.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else 
+
+        if (args[2] == "emerald" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((21600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 23400)) - ((21600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 23400)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Emerald Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/tTq2TEV.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else
+        if (args[2] == "emeraldore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+            var output = (((14400 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 15600)) - ((14400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 15600)));
+            if (output >= 0) {
+            var embed = new Discord.RichEmbed()
+            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            embed.setTitle(`Energy Required get **Level ${args[3]}** Emerald Ore Satchel to **Level ${args[4]}**`)
+            embed.setDescription(`${output.toLocaleString()} Energy`)
+            embed.setColor("4286f4")
+            embed.setThumbnail("https://i.imgur.com/L8HWA6J.png")
+            message.channel.send(embed);
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
+        } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
     } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
     break;
     
