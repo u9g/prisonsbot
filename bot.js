@@ -23,6 +23,11 @@ bot.on("message", function(message) {
     
     switch (args[0].toLowerCase()) {
 
+        case "send":
+        
+        devchannel.send(`**${message.author.username}:** *${message}*`)
+        break;
+
         case "armor":
         case "armour":
         case "pickaxe":
