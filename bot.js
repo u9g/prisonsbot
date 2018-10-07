@@ -4,12 +4,14 @@ const PREFIX = "!";
 
 var bot = new Discord.Client();
 
-var channelid = "479281923261202432";
+var channelid = "479920855460216843";
+
+var sendid = "498473254504366099";
 
 bot.on("ready", function() {
     var devchannel = bot.channels.get(channelid)
     devchannel.send("<@204248274826166272> Bot Online")
-    console.log("Bot Online");
+    console.log("Bot Online")
     
 bot.user.setActivity('!help by Majorblake')
 });
@@ -25,8 +27,11 @@ bot.on("message", function(message) {
 
         case "send":
         
-        var sendChannel = bot.channels.get(498473254504366099);
-        sendChannel.send(`**${message.author.username}:** *${message}*`)
+        var now = new Date();
+        var hours = [ now.getHours()];
+        var minutes = [ now.getMinutes()];
+        var sendchannel = bot.channels.get(channelid);
+        sendchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
         break;
 
         case "armor":
