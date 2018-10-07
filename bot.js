@@ -6,6 +6,8 @@ var bot = new Discord.Client();
 
 var channelid = "479281923261202432";
 
+var sendchannelid = "498473254504366099";
+
 bot.on("ready", function() {
     var devchannel = bot.channels.get(channelid)
     devchannel.send("<@204248274826166272> Bot Online")
@@ -22,6 +24,12 @@ bot.on("message", function(message) {
     var args = message.content.substring(PREFIX.length).split(' ');
     
     switch (args[0].toLowerCase()) {
+
+        case "send":
+
+        var sendchannel = bot.channels.get(sendchannelid);
+        sendchannel.send(`**${message.author.username}:** ${message}`)
+        break;
 
         case "armor":
         case "armour":
