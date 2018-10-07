@@ -25,8 +25,8 @@ bot.on("message", function(message) {
 
         case "send":
         
-        var sendchannel = bot.channels.get("498473254504366099");
-        sendchannel.send(`**${message.author.username}:** *${message}*`)
+        var sendChannel = bot.channels.get(498473254504366099);
+        sendChannel.send(`**${message.author.username}:** *${message}*`)
         break;
 
         case "armor":
