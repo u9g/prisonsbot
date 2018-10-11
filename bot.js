@@ -31,7 +31,7 @@ bot.on("message", function(message) {
         var sendchannel = bot.channels.get(sendchannelid);
         sendchannel.send(`**${message.author.username}:** ${message}`)
         message.channel.send("**Thank You, your message has been sent**")
-        }
+        } else
         message.channel.send("**Invalid Input**\n\n!send [info]")
         break;
 
