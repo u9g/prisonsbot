@@ -24,12 +24,6 @@ bot.on("message", function(message) {
     
     switch (args[0].toLowerCase()) {
 
-        case "a":
-        if (message.author.id == "204248274826166272") {
-        var announce = bot.channels.array()
-        message.announce.send(message)
-        } break;
-
         case "prune":
 
         if (message.channel.type == "text") {
