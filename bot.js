@@ -25,6 +25,16 @@ bot.on("message", function(message) {
     
     switch (args[0].toLowerCase()) {
 
+        case "prune":
+
+        if (message.author.id == "204248274826166272") {
+        if ((args[1] >= 1) && (args[1] <= 500)) {
+        message.delete(args[1]) ;
+        } else message.channel.send("**error**")
+        } else devchannel.send(`${message.author.username} tried to prune`)
+        break;
+
+
         case "send":
 
         if (args.length > 1){
