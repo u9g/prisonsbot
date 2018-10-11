@@ -33,7 +33,7 @@ bot.on("message", function(message) {
         message.channel.bulkDelete(args[1])
         } else message.channel.send(`**error**`)
         } break;
-        } message.channel.send(`${message.channel.type}`)
+        } message.channel.send(`!prune cannot be used in a ${message.channel.type}`)
         break;
 
 
