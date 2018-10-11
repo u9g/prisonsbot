@@ -59,7 +59,7 @@ bot.on("message", function(message) {
             embed.addField("**!target [type] [rarity] [current level] [target level]**", "Calculates amount of Energy needed to get current level of equipment to target level")
             embed.addField("**!help**", "Displays this message")
             embed.addField("**!stats**", "Displays bot stats")
-            embed.addField("**!send**", "Send information to the developer")
+            embed.addField("**!send [info]**", "Send information to the developer")
             embed.addBlankField()
             embed.addField("**[type]:**", "(pickaxe, guard, satchel)")
             embed.addField("**[rarity]:**", "(wood, stone, gold, iron, diamond)\n(coal, coalore, iron, ironore, lapis, lapisore, redstone, redstoneore, diamond, diamondore, emerald, emeraldore)")
