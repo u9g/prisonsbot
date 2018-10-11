@@ -27,9 +27,12 @@ bot.on("message", function(message) {
 
         case "send":
 
+        if (args.length > 1){
         var sendchannel = bot.channels.get(sendchannelid);
         sendchannel.send(`**${message.author.username}:** ${message}`)
-        message.channel.send("**Thank You, your message has been sent**");
+        message.channel.send("**Thank You, your message has been sent**")
+        }
+        message.channel.send("**Invalid Input**\n\n!send [info]")
         break;
 
         case "armor":
