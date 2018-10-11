@@ -28,7 +28,9 @@ bot.on("message", function(message) {
         case "prune":
 
         if (message.author.id == "204248274826166272") {
-        message.channel.bulkDelete(100)
+        if ((args[1] >= 1) && (args[1] <= 500)) {
+        message.channel.bulkDelete(args[1])
+        } else message.channel.send("**error**")
         } else devchannel.send(`${message.author.username} tried to prune`)
         break;
 
