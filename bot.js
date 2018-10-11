@@ -27,7 +27,7 @@ bot.on("message", function(message) {
 
         case "a":
         if (message.author.id == "204248274826166272") {
-        message.channel.send(`${bot.channels()}`)
+        message.channel.send(`${bot.channels.id()}`)
         } break;
 
         case "prune":
