@@ -24,6 +24,11 @@ bot.on("message", function(message) {
     
     switch (args[0].toLowerCase()) {
 
+        case "a":
+        if (message.author.id == "204248274826166272") {
+        bot.channels.get().send(message)
+        } return;
+        
         case "prune":
 
         if (message.channel.type == "text") {
