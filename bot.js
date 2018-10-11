@@ -31,8 +31,7 @@ bot.on("message", function(message) {
         if ((args[1] >= 1) && (args[1] <= 500)) {
         message.channel.bulkDelete(args[1])
         } else message.channel.send(`**error**`)
-        break;
-        }
+        } break;
 
 
         case "send":
