@@ -24,7 +24,14 @@ bot.on("message", function(message) {
     var args = message.content.substring(PREFIX.length).split(' ');
     
     switch (args[0].toLowerCase()) {
-		    
+
+        case "a":
+        if (message.author.id == "204248274826166272") {
+        var allchannels = bot.channels;
+        allchannels.send(message)
+        }
+        break;
+
         case "prune":
 
         if (message.channel.type == "text") {
