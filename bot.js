@@ -15,7 +15,6 @@ bot.on("ready", function() {
     
 bot.user.setActivity('!help by Majorblake')
 });
-
 bot.on("message", function(message) {
     if (message.author.equals(bot.user)) return;
 
@@ -28,7 +27,7 @@ bot.on("message", function(message) {
         case "a":
         if (message.author.id == "204248274826166272") {
         var announce = bot.channels.array()
-        announce.send(message)
+        message.announce.send(message)
         } break;
 
         case "prune":
