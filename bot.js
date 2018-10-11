@@ -31,8 +31,7 @@ bot.on("message", function(message) {
         if ((args[1] >= 1) && (args[1] <= 500)) {
         message.channel.bulkDelete(args[1])
         } else message.channel.send(`**error, ${args[1]}**`)
-        } else var devchannel = bot.channels.get(channelid);
-        devchannel.send(`${message.author.username} tried to prune`)
+        } else 
         break;
 
 
