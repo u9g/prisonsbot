@@ -24,12 +24,12 @@ bot.on("message", function(message) {
     
     switch (args[0].toLowerCase()) {
 		    
-	case "user":
+        case "user":
         if (message.author.id != "204248274826166272") { return }
         if (args.length >= 2) {
           var UsernameArray = [];
           var FoundUsers = [];
-          UsersObject = discordbot.users.values()
+          UsersObject = bot.users.values()
           for (let User of UsersObject) {
             UsernameArray.push(`${User.username},${User.discriminator},${User.id}`)
           }
@@ -40,23 +40,23 @@ bot.on("message", function(message) {
           }
           if (FoundUsers.length > 20) {
             message.channel.send(new Discord.RichEmbed()
-            .setColor(errorColor)
-            .setAuthor('Error', iconURL)
+            .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            .setColor("4286f4")
             .setDescription(`Found > 20 Usernames matching "${args[1]}"\nTry Being more specific`)
             )
             return;
           } 
           if (FoundUsers.length >= 1) {
             message.channel.send(new Discord.RichEmbed()
-            .setColor(embedColor)
-            .setAuthor('User Search', iconURL)
+            .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            .setColor("4286f4")
             .setDescription(`Found ${FoundUsers.length} Usernames matching "${args[1]}"\n\n${FoundUsers.join('\n')}`)
             )
             return;
           }
           message.channel.send(new Discord.RichEmbed()
-          .setColor(errorColor)
-          .setAuthor('Error', iconURL)
+          .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+          .setColor("4286f4")
           .setDescription(`Found 0 Usernames matching "${args[1]}"`)
           )
           return;
