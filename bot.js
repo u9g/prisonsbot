@@ -23,6 +23,45 @@ bot.on("message", function(message) {
     var args = message.content.substring(PREFIX.length).split(' ');
     
     switch (args[0].toLowerCase()) {
+		    
+	case "user":
+        if (message.author.id != "204248274826166272") { return }
+        if (args.length >= 2) {
+          var UsernameArray = [];
+          var FoundUsers = [];
+          UsersObject = discordbot.users.values()
+          for (let User of UsersObject) {
+            UsernameArray.push(`${User.username},${User.discriminator},${User.id}`)
+          }
+          for (i = 0; i < UsernameArray.length; i++) {
+            if (UsernameArray[i].split(',')[0].toLowerCase().includes(`${args[1].toLowerCase()}`)) {
+              FoundUsers.push(`**${UsernameArray[i].split(',')[0]}#${UsernameArray[i].split(',')[1]}** (${UsernameArray[i].split(',')[2]})`)
+            }
+          }
+          if (FoundUsers.length > 20) {
+            message.channel.send(new Discord.RichEmbed()
+            .setColor(errorColor)
+            .setAuthor('Error', iconURL)
+            .setDescription(`Found > 20 Usernames matching "${args[1]}"\nTry Being more specific`)
+            )
+            return;
+          } 
+          if (FoundUsers.length >= 1) {
+            message.channel.send(new Discord.RichEmbed()
+            .setColor(embedColor)
+            .setAuthor('User Search', iconURL)
+            .setDescription(`Found ${FoundUsers.length} Usernames matching "${args[1]}"\n\n${FoundUsers.join('\n')}`)
+            )
+            return;
+          }
+          message.channel.send(new Discord.RichEmbed()
+          .setColor(errorColor)
+          .setAuthor('Error', iconURL)
+          .setDescription(`Found 0 Usernames matching "${args[1]}"`)
+          )
+          return;
+        }
+        break;
 
         case "prune":
 
