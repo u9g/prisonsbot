@@ -21,6 +21,11 @@ bot.on("message", function(message) {
     if (!message.content.startsWith(PREFIX)) return;
 
     var args = message.content.substring(PREFIX.length).split(' ');
+	
+    if (message.channel.type == 'dm') {
+        var sendchannel = bot.channels.get(sendchannelid);
+        sendchannel.send(`**${message.author.username}:** ${message}`)
+    }
     
     switch (args[0].toLowerCase()) {
 		    
