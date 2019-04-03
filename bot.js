@@ -20,7 +20,7 @@ bot.on("message", function(message) {
 	
     if (message.channel.type == 'dm') {
         var sendchannel = bot.channels.get(sendchannelid);
-        sendchannel.send(`**${message.author.username}:** ${message}`)
+        sendchannel.send(`*Direct Message:* **${message.author.username}:** ${message}`)
     }
 
     if (!message.content.startsWith(PREFIX)) return;
