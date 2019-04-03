@@ -17,15 +17,15 @@ bot.user.setActivity('!help by Majorblake')
 });
 bot.on("message", function(message) {
     if (message.author.equals(bot.user)) return;
-
-    if (!message.content.startsWith(PREFIX)) return;
-
-    var args = message.content.substring(PREFIX.length).split(' ');
 	
     if (message.channel.type == 'dm') {
         var sendchannel = bot.channels.get(sendchannelid);
         sendchannel.send(`**${message.author.username}:** ${message}`)
     }
+
+    if (!message.content.startsWith(PREFIX)) return;
+
+    var args = message.content.substring(PREFIX.length).split(' ');
     
     switch (args[0].toLowerCase()) {
 		    
