@@ -62,6 +62,35 @@ bot.on("message", function(message) {
           return;
         }
         break;
+		    
+	case "reply":
+        if (message.author.id != "204248274826166272") { return }
+        if (args.length >= 3) {
+          if (args[1].length == 18) {
+            user = bot.users.get(args[1])
+            if (user != undefined) {
+              args.splice(0, 2)
+              user.send(new Discord.RichEmbed()
+              .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+              .setColor("4286f4")
+              .setDescription(`Reply from **${message.author.username}**:\n\n` + "`" + `${args.join(' ')}` + "`")
+              )
+              return;
+            }
+            message.channel.send(new Discord.RichEmbed()
+            .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            .setColor("4286f4")
+            .setDescription(`Couldn't find user with ID: **${args[1]}**`)
+            )
+          return;
+          }
+        }
+        message.channel.send(new Discord.RichEmbed()
+        .setColor(errorColor)
+        .setAuthor(`Error`, iconURL)
+        .setDescription(`Invalid Arguments`)
+        )
+        break;
 
         case "prune":
 
