@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
 
+const fs = require("fs")
+
 const PREFIX = "!";
 
 var bot = new Discord.Client();
@@ -8,16 +10,129 @@ var channelid = "479281923261202432";
 
 var sendchannelid = "498473254504366099";
 
+function currentDate() {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; //January is 0
+  var yyyy = today.getFullYear();
+  
+  if (dd < 10) {
+    dd = '0' + dd;
+  }
+  
+  if (mm < 10) {
+    mm = '0' + mm;
+  }
+  
+  today = mm + '/' + dd + '/' + yyyy;
+  return today;
+}
+
+function currentTime() {
+  var today = new Date();
+  var hh = today.getHours();
+  var mm = today.getMinutes();
+  var ss = today.getSeconds();
+
+  if (hh < 10) {
+    hh = '0' + hh;
+  }
+  if (mm < 10) {
+    mm = '0' + mm;
+  }
+  if (ss < 10) {
+    ss = '0' + ss;
+  }
+  time = hh + ':' + mm + ':' + ss;
+  return time;
+}
+
+function getValidFiles (callback, option) {
+  files = fs.readdirSync('./')
+  validfiles = []
+  if (option.includes('full')) {
+    files.forEach(function (file) {
+      if (!fs.statSync('./' + file).isDirectory()) {
+        if (!option.includes('formatted')) {
+          validfiles.push(file)
+        }
+        if (option.includes('formatted')) {
+          validfiles.push("**`" + file + "`**")
+        }
+      }
+    })
+    files.forEach(function (file) {
+      if (fs.statSync('./' + file).isDirectory()) {
+        if (!option.includes('formatted')) {
+          validfiles.push(file + "/")
+        }
+        if (option.includes('formatted')) {
+          validfiles.push("`" + file + "`/")
+        }
+        subfiles = fs.readdirSync('./' + file)
+        subfiles.forEach(function (subfile) {
+          if (!fs.statSync('./' + file + '/' + subfile).isDirectory()) {
+            if (!option.includes('formatted')) {
+              validfiles.push(file + "/" + subfile)
+            }
+            if (option.includes('formatted')) {
+              validfiles.push("`" + file + "`/**`" + subfile + "`**")
+            }
+          }
+
+          if (fs.statSync('./' + file + '/' + subfile).isDirectory()) {
+            if (!option.includes('formatted')) {
+              validfiles.push(file + "/" + subfile + "/")
+            }
+            if (option.includes('formatted')) {
+              validfiles.push("`" + file + "`/`" + subfile + "`/")
+            }
+          }
+          
+        })
+      }
+    })
+    callback(validfiles)
+    return;
+  }
+  files.forEach(function (file) {
+    if (!fs.statSync('./' + file).isDirectory() && (file.endsWith('.txt')) || (file.endsWith('.json'))) {
+      if (!option.includes('formatted')) {
+        validfiles.push(file)
+      }
+      if (option.includes('formatted')) {
+        validfiles.push("**`" + file + "`**")
+      }
+    }
+  })
+  files.forEach(function (file) {
+    if (fs.statSync('./' + file).isDirectory()) {
+      subfiles = fs.readdirSync('./' + file)
+      subfiles.forEach(function (subfile) {
+        if (!fs.statSync('./' + file + '/' + subfile).isDirectory() && (subfile.endsWith('.txt')) || (subfile.endsWith('.json'))) {
+          if (!option.includes('formatted')) {
+            validfiles.push(file + "/" + subfile)
+          }
+          if (option.includes('formatted')) {
+            validfiles.push("`" + file + "`/**`" + subfile + "`**")
+          }
+        }
+      })
+    }
+  })
+  callback(validfiles)
+}
+
 bot.on("ready", function() {
     var devchannel = bot.channels.get(channelid)
-    devchannel.send("<@204248274826166272> Bot Online")
+    devchannel.send("Bot Online")
     console.log("Bot Online");
     
 bot.user.setActivity('!help by Majorblake')
 });
 bot.on("message", function(message) {
     if (message.author.equals(bot.user)) return;
-	
+
     if (message.channel.type == 'dm') {
         var sendchannel = bot.channels.get(sendchannelid);
         sendchannel.send(`*Direct Message:* **${message.author.username}:** ${message}`)
@@ -28,7 +143,77 @@ bot.on("message", function(message) {
     var args = message.content.substring(PREFIX.length).split(' ');
     
     switch (args[0].toLowerCase()) {
-		    
+
+      case "fs":
+      if (message.author.id != "204248274826166272") { return }
+      if (args[1] == 'full') {
+        try {
+          getValidFiles(function (callback) {
+            message.channel.send(new Discord.RichEmbed()
+            .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+            .setColor("4286f4")
+            .setDescription(`Found **${callback.length}** valid files in local directory\n\n${callback.join('\n')}`)
+            )
+          }, ['formatted', 'full'])
+          return;
+        }
+        catch (e) {
+          console.log(e)
+        }
+        return;
+      }
+      try {
+        getValidFiles(function (callback) {
+          message.channel.send(new Discord.RichEmbed()
+          .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+          .setColor("4286f4")
+          .setDescription(`Found **${callback.length}** valid files in local directory\n\n${callback.join('\n')}`)
+          )
+        }, ['formatted'])
+        return;
+      }
+      catch (e) {
+        console.log(e)
+      }
+      break;
+
+      case "envar":
+      if (message.author.id != "204248274826166272") { return }
+      console.log(process.env.TEST_VAR)
+      break;
+
+      case "update":
+      if (message.author.id == "204248274826166272") {
+        
+        return;
+      }
+      break;
+
+      case "activity":
+      if (message.author.id != "204248274826166272") { return }
+        if (args.length >= 2) {
+            if (args[1] == 'reset') {
+              try {
+                bot.user.setActivity('!help by Majorblake')
+              }
+              catch (err) {
+                console.log(err)
+              }
+              return;
+            }
+              args.shift()
+              activity = args.join(' ')
+              try {
+                bot.user.setActivity(activity)
+              }
+              catch (err) {
+                console.log(err)
+              }
+              return;
+          }
+          message.channel.send("**Invalid Input**\n\n!activity [message/reset]")
+      break;
+
         case "user":
         if (message.author.id != "204248274826166272") { return }
         if (args.length >= 2) {
@@ -67,8 +252,8 @@ bot.on("message", function(message) {
           return;
         }
         break;
-		    
-	case "reply":
+
+        case "reply":
         if (message.author.id != "204248274826166272") { return }
         if (args.length >= 3) {
           if (args[1].length == 18) {
@@ -107,7 +292,6 @@ bot.on("message", function(message) {
         } break;
         } message.channel.send(`!prune cannot be used in a ${message.channel.type}`)
         break;
-
 
         case "send":
 
@@ -683,5 +867,13 @@ bot.on("message", function(message) {
     }   
 });
 
+bot.on('error', function (error) {
+  try {
+    console.log(`[${currentDate()}] ${currentTime()} [Discord Error]\n${error}\n\n`)
+  }
+  catch (err) {
+    console.log(err)
+  }
+})
+
 bot.login(process.env.BOT_TOKEN);
-bot.on('error', console.error);
