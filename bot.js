@@ -179,7 +179,7 @@ bot.on("message", function(message) {
 
       case "envar":
       if (message.author.id != "204248274826166272") { return }
-      console.log(process.env.TEST_VAR)
+      message.channel.send(process.env.TEST_VAR)
       break;
 
       case "update":
