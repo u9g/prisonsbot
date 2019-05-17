@@ -2,13 +2,13 @@ const Discord = require("discord.js");
 
 const fs = require("fs")
 
-const PREFIX = "!";
-
 var bot = new Discord.Client();
 
 var channelid = "479281923261202432";
 
 var sendchannelid = "498473254504366099";
+
+const PREFIX = "!";
 
 function currentDate() {
   var today = new Date();
@@ -123,14 +123,155 @@ function getValidFiles (callback, option) {
   callback(validfiles)
 }
 
+function pickaxeEnergy (rarity, level) {
+  if (level < 1 || level > 100 || Number.isInteger(parseFloat(level)) == false) { return false }
+  if (['wood', 'wooden', 'stone', 'gold', 'golden', 'iron', 'diamond'].includes(rarity.toLowerCase())) {
+    switch (rarity.toLowerCase()) {
+
+      case "wood":
+      case "wooden":
+      return ((4800 * (level - 1)) + (((level - 2) * (level -1) / 2) * 9600));
+
+      case "stone":
+      return ((6000 * (level - 1)) + (((level - 2) * (level -1) / 2) * 10800));
+
+      case "gold":
+      case "golden":
+      return ((7200 * (level - 1)) + (((level - 2) * (level -1) / 2) * 12000));
+
+      case "iron":
+      return ((8400 * (level - 1)) + (((level - 2) * (level -1) / 2) * 13200));
+
+      case "diamond":
+      return ((9600 * (level - 1)) + (((level - 2) * (level -1) / 2) * 14400));
+      
+      default:
+      return false
+
+    }
+  }
+}
+
+function prestigeLevels (rarity, level) {
+
+  if (level < 1 || level > 5 || Number.isInteger(parseFloat(level)) == false) { return false }
+  level = parseFloat(level)
+
+  switch (rarity.toLowerCase()) {
+    case "wood":
+    case "wooden":
+    return (20 + ((level - 1) * 5))
+
+    case "stone":
+    return (25 + ((level - 1) * 5))
+
+    case "gold":
+    case "golden":
+    return (30 + ((level - 1) * 5))
+
+    case "iron":
+    return (35 + ((level - 1) * 5))
+
+    case "diamond":
+    return (40 + ((level - 1) * 5))
+    
+    default:
+    return false
+  }
+}
+
+function toRomanNumerals (input) {
+  if (typeof input == 'string') {
+    input = input.toLowerCase()
+  }
+  if (Number.isInteger(parseFloat(input))) {
+    input = parseFloat(input).toFixed(0)
+  }
+    switch (input) {
+
+      case '0':
+      case 'o':
+      case 'nulla':
+      return '0'
+
+      case '1':
+      case 'i':
+      return 'I'
+
+      case '2':
+      case 'ii':
+      return 'II'
+          
+      case '3':
+      case 'iii':
+      return 'III'
+
+      case '4':
+      case 'iV':
+      return 'IV'
+
+      case '5':
+      case 'V':
+      return 'V'
+
+      default:
+      return 'null'
+  }
+}
+
+function toPrestigeNumber (input) {
+  if (typeof input == 'string') {
+    input = input.toLowerCase()
+  }
+  switch (input) {
+    case "o":
+    input = 0
+    break;
+    case "i":
+    input = 1
+    break;
+    case "ii":
+    input = 2
+    break;
+    case "iii":
+    input = 3
+    break;
+    case "iv":
+    input = 4
+    break;
+    case "v":
+    input = 5
+    break;
+  }
+  input = parseFloat(input)
+  if (typeof input == 'number') {
+    input = input.toFixed(0)
+    return input
+  }
+  return false
+}
+
 bot.on("ready", function() {
     var devchannel = bot.channels.get(channelid)
     devchannel.send("Bot Online")
     console.log("Bot Online");
     
-bot.user.setActivity('!help by Majorblake')
-});
-bot.on("message", function(message) {
+    if (process.env.UPDATE != undefined) {
+      if (typeof process.env.UPDATE == 'object') {
+        updateObject = process.env.UPDATE
+        if (Object.keys(updateObject).includes('enabled') && Object.keys(updateObject).includes('activity')) {
+          if (updateObject['enabled'] == true) {
+            if (updateObject['activity'] != undefined && updateObject['activity'] != '') {
+              bot.user.setActivity(updateObject['activity'])
+              return;
+            }
+          }
+        }
+      }
+    }
+    bot.user.setActivity('!help by Majorblake')
+  });
+  bot.on("message", function(message) {
     if (message.author.equals(bot.user)) return;
 
     if (message.channel.type == 'dm') {
@@ -177,16 +318,27 @@ bot.on("message", function(message) {
       }
       break;
 
-      case "envar":
-      if (message.author.id != "204248274826166272") { return }
-      message.channel.send(process.env.TEST_VAR)
-      break;
-
       case "update":
-      if (message.author.id == "204248274826166272") {
-        
-        return;
+      if (process.env.UPDATE != undefined) {
+        if (typeof process.env.UPDATE == 'object') {
+          updateObject = process.env.UPDATE
+          if (Object.keys(updateObject).includes('enabled') && Object.keys(updateObject).includes('content')) {
+            if (updateObject['enabled'] == true) {
+              message.channel.send(new Discord.RichEmbed()
+              .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+              .setColor("4286f4")
+              .setDescription(updateObject['content'])
+              )
+              return;
+            }
+          }
+        }
       }
+      message.channel.send(new Discord.RichEmbed()
+      .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+      .setColor("4286f4")
+      .setDescription(`**Couldn't find any recent updates!**`)
+      )
       break;
 
       case "activity":
@@ -293,14 +445,16 @@ bot.on("message", function(message) {
         } message.channel.send(`!prune cannot be used in a ${message.channel.type}`)
         break;
 
-        case "send":
+        case "report":
+        case "suggestion":
+        case "support":
 
         if (args.length > 1){
         var sendchannel = bot.channels.get(sendchannelid);
         sendchannel.send(`**${message.author.username}:** ${message}`)
-        message.channel.send("**Thank You, your message has been sent**")
+        message.channel.send(`**Thank You, your ${args[0].replace('support', 'support ticket')} has been sent**`)
         } else
-        message.channel.send("**Invalid Input**\n\n!send [info]")
+        message.channel.send(`**Invalid Input**\n\n!${args[0].replace('support', 'support ticket')} [info]`)
         break;
 
         case "armor":
@@ -309,13 +463,12 @@ bot.on("message", function(message) {
         case "sword":
         case "axe":
         case "guard":
-
         message.channel.send("**This command has moved!**\n\nUse !help")
         break;
 
         case "help":
 
-		var now = new Date();
+		    var now = new Date();
         var hours = [ now.getHours()];
         var minutes = [ now.getMinutes()];
         var devchannel = bot.channels.get(channelid);
@@ -326,22 +479,25 @@ bot.on("message", function(message) {
             embed.setTitle(`**Command Help**`)
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/fLSiuh9.png")
-            embed.addField("**!calc [type] [rarity] [level]**","Calculates amount of Energy needed to get specified rarity of equipment to specified level")
+            embed.addField("**!calc [type] [rarity] <prestige level> [level]**","Calculates amount of Energy needed to get specified rarity of equipment to specified level\n*Optional: <prestige level> to calculate the energy needed for the specified Prestige tier pickaxe with specified pickaxe level*")
             embed.addField("**!target [type] [rarity] [current level] [target level]**", "Calculates amount of Energy needed to get current level of equipment to target level")
             embed.addField("**!help**", "Displays this message")
             embed.addField("**!stats**", "Displays bot stats")
-            embed.addField("**!send [info]**", "Send information to the developer")
+            embed.addField("**!report [message]**", "Report a bug")
+            embed.addField("**!suggestion [message]**", "Make a suggestion")
+            embed.addField("**!support [message]**", "Ask for support from the owner of the bot")
             embed.addBlankField()
             embed.addField("**[type]:**", "(pickaxe, guard, satchel)")
             embed.addField("**[rarity]:**", "(wood, stone, gold, iron, diamond)\n(coal, coalore, iron, ironore, lapis, lapisore, redstone, redstoneore, diamond, diamondore, emerald, emeraldore)")
-            embed.addField("**[level]:**", "Between 2 and 100 (Keep in mind unenchanted equipment is Level 1)\nor between 2 and 40 for guards")
+            embed.addField("**[level]:**", "Between 2 and 100 for pickaxes (Because unenchanted equipment is Level 1)\nBetween 2 and 150 for satchels\nBetween 2 and 40 for guards\nBetween I and V (or 1-5) for prestige pickaxes")
+            embed.addField("**<prestige level>**", "Numerals (I-V) or Numbers (1-5)")
             embed.setFooter("note: all commands should be in lower-case", "https://i.imgur.com/0McxHIL.png")
             message.channel.send(embed);
             break;
 
         case "stats":
 
-		var now = new Date();
+		    var now = new Date();
         var hours = [ now.getHours()];
         var minutes = [ now.getMinutes()];
         var devchannel = bot.channels.get(channelid);
@@ -361,69 +517,144 @@ bot.on("message", function(message) {
         case "calculate":
         case "calc":
 
-		var now = new Date();
+		    var now = new Date();
         var hours = [ now.getHours()];
         var minutes = [ now.getMinutes()];
         var devchannel = bot.channels.get(channelid);
         devchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
-
 // DISABLED
         if (args[1] == "armor" || args[1] == "armour" || args[1] == "sword" || args[1] == "axe") {
-            message.channel.send("**Due to the recent** ***'Pvp Update'*** **Armor, Swords, & Axes can no longer be supported**\nPickaxes, Guards, & Satchels *do* still work for both !calc & !target\n\n*The PvP Update* - https://bit.ly/2QzHBJ4")
+            message.channel.send("**Due to the** ***'Pvp Update'*** **Armor, Swords, & Axes can no longer be supported**\nPickaxes, Guards, & Satchels *do* still work for both !calc & !target\n\n*The PvP Update* - https://bit.ly/2QzHBJ4")
         } else
 //PICKAXE
         if (args[1] == "pickaxe" || args[1] == "pick") {
-        if ((args[2] == "wood" || args[2] == "wooden") && args[3] >= 2 && args[3] <= 100) {
-            var output = ((4800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 9600));
-            var embed = new Discord.RichEmbed()
-            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
-            embed.setTitle(`Energy Required to make **Level ${args[3]}** Wood Pickaxe`)
-            embed.setDescription(`${output.toLocaleString()} Energy`)
-            embed.setColor("4286f4")
-            embed.setThumbnail("https://i.imgur.com/FdSfdhC.png")
-            message.channel.send(embed);
-        } else
-        if (args[2] == "stone" && args[3] >= 2 && args[3] <= 100) {
-            var output = ((6000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 10800));
-            var embed = new Discord.RichEmbed()
-            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
-            embed.setTitle(`Energy Required to make **Level ${args[3]}** Stone Pickaxe`)
-            embed.setDescription(`${output.toLocaleString()} Energy`)
-            embed.setColor("4286f4")
-            embed.setThumbnail("https://i.imgur.com/tPUTodA.png")
-            message.channel.send(embed);
-        } else
-        if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 100) {
-            var output = ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000));
-            var embed = new Discord.RichEmbed()
-            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
-            embed.setTitle(`Energy Required to make **Level ${args[3]}** Gold Pickaxe`)
-            embed.setDescription(`${output.toLocaleString()} Energy`)
-            embed.setColor("4286f4")
-            embed.setThumbnail("https://i.imgur.com/vctODx9.png")
-            message.channel.send(embed);
-        } else
-        if (args[2] == "iron" && args[3] >= 2 && args[3] <= 100) {
-            var output = ((8400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 13200));
-            var embed = new Discord.RichEmbed()
-            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
-            embed.setTitle(`Energy Required to make **Level ${args[3]}** Iron Pickaxe`)
-            embed.setDescription(`${output.toLocaleString()} Energy`)
-            embed.setColor("4286f4")
-            embed.setThumbnail("https://i.imgur.com/uoKfLbK.png")
-            message.channel.send(embed);
-        } else
-        if (args[2] == "diamond" && args[3] >= 2 && args[3] <= 100) {
-            var output = ((9600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400));
-            var embed = new Discord.RichEmbed()
-            embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
-            embed.setTitle(`Energy Required to make **Level ${args[3]}** Diamond Pickaxe`)
-            embed.setDescription(`${output.toLocaleString()} Energy`)
-            embed.setColor("4286f4")
-            embed.setThumbnail("https://i.imgur.com/4mESgHv.png")
-            message.channel.send(embed);
+          if (args.length == 4) {
+            if ((args[2] == "wood" || args[2] == "wooden") && args[3] >= 2 && args[3] <= 100) {
+                var output = ((4800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 9600));
+                var embed = new Discord.RichEmbed()
+                embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+                embed.setTitle(`Energy Required to make **Level ${args[3]}** Wood Pickaxe`)
+                embed.setDescription(`${output.toLocaleString()} Energy`)
+                embed.setColor("4286f4")
+                embed.setThumbnail("https://i.imgur.com/FdSfdhC.png")
+                message.channel.send(embed);
+            } else
+            if (args[2] == "stone" && args[3] >= 2 && args[3] <= 100) {
+                var output = ((6000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 10800));
+                var embed = new Discord.RichEmbed()
+                embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+                embed.setTitle(`Energy Required to make **Level ${args[3]}** Stone Pickaxe`)
+                embed.setDescription(`${output.toLocaleString()} Energy`)
+                embed.setColor("4286f4")
+                embed.setThumbnail("https://i.imgur.com/tPUTodA.png")
+                message.channel.send(embed);
+            } else
+            if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 100) {
+                var output = ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000));
+                var embed = new Discord.RichEmbed()
+                embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+                embed.setTitle(`Energy Required to make **Level ${args[3]}** Gold Pickaxe`)
+                embed.setDescription(`${output.toLocaleString()} Energy`)
+                embed.setColor("4286f4")
+                embed.setThumbnail("https://i.imgur.com/vctODx9.png")
+                message.channel.send(embed);
+            } else
+            if (args[2] == "iron" && args[3] >= 2 && args[3] <= 100) {
+                var output = ((8400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 13200));
+                var embed = new Discord.RichEmbed()
+                embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+                embed.setTitle(`Energy Required to make **Level ${args[3]}** Iron Pickaxe`)
+                embed.setDescription(`${output.toLocaleString()} Energy`)
+                embed.setColor("4286f4")
+                embed.setThumbnail("https://i.imgur.com/uoKfLbK.png")
+                message.channel.send(embed);
+            } else
+            if (args[2] == "diamond" && args[3] >= 2 && args[3] <= 100) {
+                var output = ((9600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400));
+                var embed = new Discord.RichEmbed()
+                embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+                embed.setTitle(`Energy Required to make **Level ${args[3]}** Diamond Pickaxe`)
+                embed.setDescription(`${output.toLocaleString()} Energy`)
+                embed.setColor("4286f4")
+                embed.setThumbnail("https://i.imgur.com/4mESgHv.png")
+                message.channel.send(embed);
+            
+            } 
+          } else
+          if (args.length == 5) {
+            if (['wood', 'wooden', 'stone', 'gold', 'golden', 'iron', 'diamond'].includes(args[2].toLowerCase())) {
+              prestigeLevel = parseFloat(toPrestigeNumber(args[3]))
+              if (isNaN(prestigeLevel) == false && prestigeLevel >= 1 && prestigeLevel <= 5) {
+                pickaxeLevel = parseFloat(args[4]).toFixed(0)
+                if (isNaN(pickaxeLevel) == false && ((pickaxeLevel >= 2 && pickaxeLevel <= 100) || pickaxeLevel == 1)) {
+                  totalEnergy = 0
+                  for (i = 1; i <= prestigeLevel; i++) {
+                    levels = prestigeLevels(args[2].toLowerCase(), i)
+                    totalEnergy += pickaxeEnergy(args[2].toLowerCase(), levels)
+                  }
+                  totalEnergy += pickaxeEnergy(args[2].toLowerCase(), pickaxeLevel)
+
+                  switch (args[2].toLowerCase()) {
+                    case "wood":
+                    case "wooden":
+                      message.channel.send(new Discord.RichEmbed()
+                      .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+                      .setTitle(`Energy Required to make **Prestige ${toRomanNumerals(prestigeLevel)}** Wood Pickaxe with **Level ${pickaxeLevel}**`)
+                      .setDescription(`${totalEnergy.toLocaleString()} Energy`)
+                      .setColor("4286f4")
+                      .setThumbnail("https://i.imgur.com/FdSfdhC.png")
+                      )
+                    break;
         
-        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
+                    case "stone":
+                      message.channel.send(new Discord.RichEmbed()
+                      .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+                      .setTitle(`Energy Required to make **Prestige ${toRomanNumerals(prestigeLevel)}** Stone Pickaxe with **Level ${pickaxeLevel}**`)
+                      .setDescription(`${totalEnergy.toLocaleString()} Energy`)
+                      .setColor("4286f4")
+                      .setThumbnail("https://i.imgur.com/tPUTodA.png")
+                      )
+                    break;
+        
+                    case "gold":
+                    case "golden":
+                      message.channel.send(new Discord.RichEmbed()
+                      .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+                      .setTitle(`Energy Required to make **Prestige ${toRomanNumerals(prestigeLevel)}** Gold Pickaxe with **Level ${pickaxeLevel}**`)
+                      .setDescription(`${totalEnergy.toLocaleString()} Energy`)
+                      .setColor("4286f4")
+                      .setThumbnail("https://i.imgur.com/vctODx9.png")
+                      )
+                    break;
+        
+                    case "iron":
+                      message.channel.send(new Discord.RichEmbed()
+                      .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+                      .setTitle(`Energy Required to make **Prestige ${toRomanNumerals(prestigeLevel)}** Iron Pickaxe with **Level ${pickaxeLevel}**`)
+                      .setDescription(`${totalEnergy.toLocaleString()} Energy`)
+                      .setColor("4286f4")
+                      .setThumbnail("https://i.imgur.com/uoKfLbK.png")
+                      )
+                    break;
+        
+                    case "diamond":
+                      message.channel.send(new Discord.RichEmbed()
+                      .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+                      .setTitle(`Energy Required to make **Prestige ${toRomanNumerals(prestigeLevel)}** Diamond Pickaxe with **Level ${pickaxeLevel}**`)
+                      .setDescription(`${totalEnergy.toLocaleString()} Energy`)
+                      .setColor("4286f4")
+                      .setThumbnail("https://i.imgur.com/4mESgHv.png")
+                      )
+                    break;
+                  }
+
+                  return;
+                }
+              }
+            }
+            message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] <prestige level> [level]")
+            return;
+          } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] <prestige level> [level]")
         } else
 
 // GUARD
@@ -437,7 +668,7 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/ZdHDjrj.png")
             message.channel.send(embed)
-        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
+        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] <prestige level> [level]")
         } else
 
 // SATCHELS
@@ -587,8 +818,8 @@ bot.on("message", function(message) {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/L8HWA6J.png")
             message.channel.send(embed);
-        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
-        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] [level]")
+        } else message.channel.send("**Invalid Input**\n\n!calc [type] <prestige level> [rarity] [level]")
+        } else message.channel.send("**Invalid Input**\n\n!calc [type] <prestige level> [rarity] [level]")
     break;
 
 // TARGET
@@ -598,7 +829,6 @@ bot.on("message", function(message) {
         var hours = [ now.getHours()];
         var minutes = [ now.getMinutes()];
         var devchannel = bot.channels.get(channelid);
-        devchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
 
 // ARMOR
         if (args[1] == "armor" || args[1] == "armour" || args[1] == "sword" || args[1] == "axe") {
