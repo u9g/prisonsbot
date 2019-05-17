@@ -8,11 +8,7 @@ var channelid = "479281923261202432";
 
 var sendchannelid = "498473254504366099";
 
-var updateObject = process.env.UPDATE
-
-console.log(Object.keys(process.env))
-console.log(process.env.UPDATE)
-console.log(process.env['UPDATE'])
+var updateObject = JSON.parse(process.env.UPDATE)
 
 const PREFIX = "!";
 
