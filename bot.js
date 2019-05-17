@@ -8,6 +8,8 @@ var channelid = "479281923261202432";
 
 var sendchannelid = "498473254504366099";
 
+var updateObject = process.env.UPDATE
+
 const PREFIX = "!";
 
 function currentDate() {
@@ -256,9 +258,8 @@ bot.on("ready", function() {
     devchannel.send("Bot Online")
     console.log("Bot Online");
     
-    if (process.env.UPDATE != undefined) {
-      if (typeof process.env.UPDATE == 'object') {
-        updateObject = process.env.UPDATE
+    if (updateObject != undefined) {
+      if (typeof updateObject == 'object') {
         if (Object.keys(updateObject).includes('enabled') && Object.keys(updateObject).includes('activity')) {
           if (updateObject['enabled'] == true) {
             if (updateObject['activity'] != undefined && updateObject['activity'] != '') {
