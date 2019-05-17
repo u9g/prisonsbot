@@ -10,6 +10,10 @@ var sendchannelid = "498473254504366099";
 
 var updateObject = JSON.parse(process.env.UPDATE)
 
+console.log(updateObject)
+console.log(Object.keys(updateObject))
+console.log(updateObject['enabled'])
+
 const PREFIX = "!";
 
 function currentDate() {
@@ -320,9 +324,9 @@ bot.on("ready", function() {
       break;
 
       case "update":
-      if (process.env.UPDATE != undefined) {
-        if (typeof process.env.UPDATE == 'object') {
-          updateObject = process.env.UPDATE
+      if (updateObject != undefined) {
+        if (typeof updateObject == 'object') {
+          updateObject = updateObject
           if (Object.keys(updateObject).includes('enabled') && Object.keys(updateObject).includes('content')) {
             if (updateObject['enabled'] == true) {
               message.channel.send(new Discord.RichEmbed()
