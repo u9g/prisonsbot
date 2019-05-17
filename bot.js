@@ -10,10 +10,6 @@ var sendchannelid = "498473254504366099";
 
 var updateObject = JSON.parse(process.env.UPDATE)
 
-console.log(updateObject)
-console.log(Object.keys(updateObject))
-console.log(updateObject['enabled'])
-
 const PREFIX = "!";
 
 function currentDate() {
