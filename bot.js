@@ -278,6 +278,22 @@ bot.on("ready", function() {
     if (message.channel.type == 'dm') {
         var sendchannel = bot.channels.get(sendchannelid);
         sendchannel.send(`*Direct Message:* **${message.author.username}:** ${message}`)
+	    
+	link = false
+        message.content.split(' ').forEach(element => {
+          if (RegExp(/(https:\/\/discord\.gg\/.*)|(invite)/).test(element.toLowerCase())) {
+            link = true
+          }
+        })
+        if (link == true) {
+          message.channel.send(new Discord.RichEmbed()
+          .setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
+          .setColor("4286f4")
+          .setDescription('Click **[here](https://discordapp.com/oauth2/authorize?client_id=479282051129016339&scope=bot&permissions=3072)** for to add the bot to your server!')
+          .setFooter(`You must have the 'Manage Server' permission in the server you wish to add the bot to.`)
+          )
+          return;
+        }
     }
 
     if (!message.content.startsWith(PREFIX)) return;
