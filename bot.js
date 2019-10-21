@@ -126,7 +126,7 @@ function getValidFiles (callback, option) {
 }
 
 function pickaxeEnergy (rarity, level) {
-  if (level < 1 || level > 100 || Number.isInteger(parseFloat(level)) == false) { return false }
+  if (level < 1 || level > 150 || Number.isInteger(parseFloat(level)) == false) { return false }
   if (['wood', 'wooden', 'stone', 'gold', 'golden', 'iron', 'diamond'].includes(rarity.toLowerCase())) {
     switch (rarity.toLowerCase()) {
 
@@ -156,7 +156,7 @@ function pickaxeEnergy (rarity, level) {
 
 function prestigeLevels (rarity, level) {
 
-  if (level < 1 || level > 5 || Number.isInteger(parseFloat(level)) == false) { return false }
+  if (level < 1 || level > 10 || Number.isInteger(parseFloat(level)) == false) { return false }
   level = parseFloat(level)
 
   switch (rarity.toLowerCase()) {
@@ -216,6 +216,26 @@ function toRomanNumerals (input) {
       case 'V':
       return 'V'
 
+      case '6':
+      case 'VI':
+      return 'VI'
+
+      case '7':
+      case 'VII':
+      return 'VII'
+
+      case '8':
+      case 'VIII':
+      return 'VIII'
+
+      case '9':
+      case 'IX':
+      return 'IX'
+
+      case '10':
+      case 'X':
+      return 'X'
+
       default:
       return 'null'
   }
@@ -243,6 +263,21 @@ function toPrestigeNumber (input) {
     break;
     case "v":
     input = 5
+    break;
+    case "vi":
+    input = 6
+    break;
+    case "vii":
+    input = 7
+    break;
+    case "viii":
+    input = 8
+    break;
+    case "ix":
+    input = 9
+    break;
+    case "x":
+    input = 10
     break;
   }
   input = parseFloat(input)
@@ -277,9 +312,9 @@ bot.on("ready", function() {
 
     if (message.channel.type == 'dm') {
         var sendchannel = bot.channels.get(sendchannelid);
-        sendchannel.send(`*Direct Message:* **${message.author.username}:** ${message}`)
+        sendchannel.send(`**${currentDate()} [${currentTime()}]** *Direct Message:* **${message.author.username}:** ${message}`)
 	    
-	link = false
+	      link = false
         message.content.split(' ').forEach(element => {
           if (RegExp(/(https:\/\/discord\.gg\/.*)|(invite)/).test(element.toLowerCase())) {
             link = true
@@ -489,7 +524,7 @@ bot.on("ready", function() {
         var hours = [ now.getHours()];
         var minutes = [ now.getMinutes()];
         var devchannel = bot.channels.get(channelid);
-        devchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
+        devchannel.send(`**${currentDate()} [${currentTime()}]** ${message.author.username}: *${message}*`)
 
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -506,19 +541,16 @@ bot.on("ready", function() {
             embed.addBlankField()
             embed.addField("**[type]:**", "(pickaxe, guard, satchel)")
             embed.addField("**[rarity]:**", "(wood, stone, gold, iron, diamond)\n(coal, coalore, iron, ironore, lapis, lapisore, redstone, redstoneore, diamond, diamondore, emerald, emeraldore)")
-            embed.addField("**[level]:**", "Between 2 and 100 for pickaxes (Because unenchanted equipment is Level 1)\nBetween 2 and 150 for satchels\nBetween 2 and 40 for guards\nBetween I and V (or 1-5) for prestige pickaxes")
-            embed.addField("**<prestige level>**", "Numerals (I-V) or Numbers (1-5)")
+            embed.addField("**[level]:**", "Between 2 and 150 for pickaxes (Unenchanted equipment is Level 1)\nBetween 2 and 150 for satchels\nBetween 2 and 40 for guards\nBetween I and X (or 1-10) for prestige pickaxes")
+            embed.addField("**<prestige level>**", "Numerals (I-X) or Numbers (1-10)")
             embed.setFooter("note: all commands should be in lower-case", "https://i.imgur.com/0McxHIL.png")
             message.channel.send(embed);
             break;
 
         case "stats":
 
-		    var now = new Date();
-        var hours = [ now.getHours()];
-        var minutes = [ now.getMinutes()];
         var devchannel = bot.channels.get(channelid);
-        devchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
+        devchannel.send(`**${currentDate()} [${currentTime()}]** ${message.author.username}: *${message}*`)
 
             var embed = new Discord.RichEmbed()
             embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -538,7 +570,7 @@ bot.on("ready", function() {
         var hours = [ now.getHours()];
         var minutes = [ now.getMinutes()];
         var devchannel = bot.channels.get(channelid);
-        devchannel.send(`**[${hours}:${minutes}]** ${message.author.username}: *${message}*`)
+        devchannel.send(`**${currentDate()} [${currentTime()}]** ${message.author.username}: *${message}*`)
 // DISABLED
         if (args[1] == "armor" || args[1] == "armour" || args[1] == "sword" || args[1] == "axe") {
             message.channel.send("**Due to the** ***'Pvp Update'*** **Armor, Swords, & Axes can no longer be supported**\nPickaxes, Guards, & Satchels *do* still work for both !calc & !target\n\n*The PvP Update* - https://bit.ly/2QzHBJ4")
@@ -546,7 +578,7 @@ bot.on("ready", function() {
 //PICKAXE
         if (args[1] == "pickaxe" || args[1] == "pick") {
           if (args.length == 4) {
-            if ((args[2] == "wood" || args[2] == "wooden") && args[3] >= 2 && args[3] <= 100) {
+            if ((args[2] == "wood" || args[2] == "wooden") && args[3] >= 2 && args[3] <= 150) {
                 var output = ((4800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 9600));
                 var embed = new Discord.RichEmbed()
                 embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -556,7 +588,7 @@ bot.on("ready", function() {
                 embed.setThumbnail("https://i.imgur.com/FdSfdhC.png")
                 message.channel.send(embed);
             } else
-            if (args[2] == "stone" && args[3] >= 2 && args[3] <= 100) {
+            if (args[2] == "stone" && args[3] >= 2 && args[3] <= 150) {
                 var output = ((6000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 10800));
                 var embed = new Discord.RichEmbed()
                 embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -566,7 +598,7 @@ bot.on("ready", function() {
                 embed.setThumbnail("https://i.imgur.com/tPUTodA.png")
                 message.channel.send(embed);
             } else
-            if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 100) {
+            if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 150) {
                 var output = ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000));
                 var embed = new Discord.RichEmbed()
                 embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -576,7 +608,7 @@ bot.on("ready", function() {
                 embed.setThumbnail("https://i.imgur.com/vctODx9.png")
                 message.channel.send(embed);
             } else
-            if (args[2] == "iron" && args[3] >= 2 && args[3] <= 100) {
+            if (args[2] == "iron" && args[3] >= 2 && args[3] <= 150) {
                 var output = ((8400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 13200));
                 var embed = new Discord.RichEmbed()
                 embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -586,7 +618,7 @@ bot.on("ready", function() {
                 embed.setThumbnail("https://i.imgur.com/uoKfLbK.png")
                 message.channel.send(embed);
             } else
-            if (args[2] == "diamond" && args[3] >= 2 && args[3] <= 100) {
+            if (args[2] == "diamond" && args[3] >= 2 && args[3] <= 150) {
                 var output = ((9600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400));
                 var embed = new Discord.RichEmbed()
                 embed.setAuthor("Prisons NRG Calculator", "https://i.imgur.com/3wjuFlc.png")
@@ -601,9 +633,9 @@ bot.on("ready", function() {
           if (args.length == 5) {
             if (['wood', 'wooden', 'stone', 'gold', 'golden', 'iron', 'diamond'].includes(args[2].toLowerCase())) {
               prestigeLevel = parseFloat(toPrestigeNumber(args[3]))
-              if (isNaN(prestigeLevel) == false && prestigeLevel >= 1 && prestigeLevel <= 5) {
+              if (isNaN(prestigeLevel) == false && prestigeLevel >= 1 && prestigeLevel <= 10) {
                 pickaxeLevel = parseFloat(args[4]).toFixed(0)
-                if (isNaN(pickaxeLevel) == false && ((pickaxeLevel >= 2 && pickaxeLevel <= 100) || pickaxeLevel == 1)) {
+                if (isNaN(pickaxeLevel) == false && ((pickaxeLevel >= 2 && pickaxeLevel <= 150) || pickaxeLevel == 1)) {
                   totalEnergy = 0
                   for (i = 1; i <= prestigeLevel; i++) {
                     levels = prestigeLevels(args[2].toLowerCase(), i)
@@ -835,8 +867,8 @@ bot.on("ready", function() {
             embed.setColor("4286f4")
             embed.setThumbnail("https://i.imgur.com/L8HWA6J.png")
             message.channel.send(embed);
-        } else message.channel.send("**Invalid Input**\n\n!calc [type] <prestige level> [rarity] [level]")
-        } else message.channel.send("**Invalid Input**\n\n!calc [type] <prestige level> [rarity] [level]")
+        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] <prestige level> [level]")
+        } else message.channel.send("**Invalid Input**\n\n!calc [type] [rarity] <prestige level> [level]")
     break;
 
 // TARGET
@@ -853,7 +885,7 @@ bot.on("ready", function() {
         } else
 // PICKAXE
         if (args[1] == "pickaxe" || args[1] == "pick") {
-        if ((args[2] == "wood" || args[2] == "wooden") && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+        if ((args[2] == "wood" || args[2] == "wooden") && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((4800 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 9600)) - ((4800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 9600)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -865,7 +897,7 @@ bot.on("ready", function() {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else 
-        if (args[2] == "stone" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+        if (args[2] == "stone" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((6000 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 10800)) - ((6000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 10800)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -877,7 +909,7 @@ bot.on("ready", function() {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+        if ((args[2] == "gold" || args[2] == "golden") && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((7200 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 12000)) - ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -889,7 +921,7 @@ bot.on("ready", function() {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (args[2] == "iron" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+        if (args[2] == "iron" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((8400 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 13200)) - ((8400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 13200)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -901,7 +933,7 @@ bot.on("ready", function() {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (args[2] == "diamond" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 100) {
+        if (args[2] == "diamond" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((9600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 14000)) - ((9600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -934,7 +966,7 @@ bot.on("ready", function() {
 // SATCHEL
 
         if (args[1] == "satchel") {
-        if (args[2] == "coal" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "coal" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((10800 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 12600)) - ((10800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12600)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -946,7 +978,7 @@ bot.on("ready", function() {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (args[2] == "coalore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "coalore" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((7200 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 8400)) - ((7200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 8400)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -959,7 +991,7 @@ bot.on("ready", function() {
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else 
         
-        if (args[2] == "iron" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "iron" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((12600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 14400)) - ((12600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -971,7 +1003,7 @@ bot.on("ready", function() {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (args[2] == "ironore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "ironore" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((8400 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 9600)) - ((8400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 9600)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -984,7 +1016,7 @@ bot.on("ready", function() {
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else 
 
-        if (args[2] == "lapis" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "lapis" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((14400 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 16200)) - ((14400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 16200)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -996,7 +1028,7 @@ bot.on("ready", function() {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (args[2] == "lapisore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "lapisore" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((9600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 10800)) - ((9600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 10800)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -1009,7 +1041,7 @@ bot.on("ready", function() {
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else 
 
-        if (args[2] == "redstone" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "redstone" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((16200 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 18000)) - ((16200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 18000)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -1021,7 +1053,7 @@ bot.on("ready", function() {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (args[2] == "redstoneore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "redstoneore" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((10800 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 12000)) - ((10800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 12000)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -1034,7 +1066,7 @@ bot.on("ready", function() {
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else 
 
-        if (args[2] == "gold" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "gold" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((18000 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 19800)) - ((18000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 19800)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -1046,7 +1078,7 @@ bot.on("ready", function() {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (args[2] == "goldore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "goldore" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((12000 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 13200)) - ((12000 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 13200)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -1059,7 +1091,7 @@ bot.on("ready", function() {
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else 
 
-        if (args[2] == "diamond" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "diamond" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((19800 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 21600)) - ((19800 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 21600)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -1071,7 +1103,7 @@ bot.on("ready", function() {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (args[2] == "diamondore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "diamondore" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((13200 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 14400)) - ((13200 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 14400)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -1084,7 +1116,7 @@ bot.on("ready", function() {
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else 
 
-        if (args[2] == "emerald" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "emerald" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((21600 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 23400)) - ((21600 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 23400)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
@@ -1096,7 +1128,7 @@ bot.on("ready", function() {
             message.channel.send(embed);
         } else message.channel.send("**Invalid Input**\n\n!target [type] [rarity] [current level] [target level]")
         } else
-        if (args[2] == "emeraldore" && args[3] >= 2 && args[3] <= 100 && args[4] >= 2 && args[4] <= 150) {
+        if (args[2] == "emeraldore" && args[3] >= 2 && args[3] <= 150 && args[4] >= 2 && args[4] <= 150) {
             var output = (((14400 * (args[4] - 1)) + (((args[4] - 2) * (args[4] -1) / 2) * 15600)) - ((14400 * (args[3] - 1)) + (((args[3] - 2) * (args[3] -1) / 2) * 15600)));
             if (output >= 0) {
             var embed = new Discord.RichEmbed()
