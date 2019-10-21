@@ -480,7 +480,7 @@ bot.on("ready", function() {
           }
         }
         message.channel.send(new Discord.RichEmbed()
-        .setColor(errorColor)
+        .setColor("4286f4")
         .setAuthor(`Error`, iconURL)
         .setDescription(`Invalid Arguments`)
         )
