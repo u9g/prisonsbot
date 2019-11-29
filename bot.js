@@ -305,7 +305,7 @@ bot.on("ready", function() {
         }
       }
     }
-    bot.user.setActivity('!help by Majorblake')
+    bot.user.setActivity('!help')
   });
   bot.on("message", function(message) {
     if (message.author.equals(bot.user)) return;
